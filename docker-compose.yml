@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  dcs-postgres:
+    image: postgres:15.3-alpine
+    container_name: login-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: login
+      POSTGRES_USER: login
+      POSTGRES_PASSWORD: login
+    ports:
+      - 5435:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
