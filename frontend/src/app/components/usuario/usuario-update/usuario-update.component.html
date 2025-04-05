@@ -1,0 +1,43 @@
+
+<p-dialog header="Atualizar Usuário" [(visible)]="visible" [modal]="true" [style]="{ width: '1000px', height: '900px' }"
+  [breakpoints]="{ '1199px': '75vw', '900px': '90vw' }" [maximizable]="true" (onHide)="cancel()">
+  <div class="card">
+    <form [formGroup]="usuarioForm"> <!-- Use o FormGroup aqui -->
+      <div class="p-fluid grid">
+
+        <div class="field col-12">
+          <span class="p-float-label">
+            <input name="nome" id="nome" type="text" pInputText formControlName="nome" required>
+            <label for="nome">Nome</label>
+          </span>
+        </div>
+
+        <div class="field col-12">
+          <span class="p-float-label">
+            <input name="email" id="email" type="email" pInputText formControlName="email" required>
+            <label for="email">Email</label>
+          </span>
+        </div>
+
+        <div class="field col-12">
+          <label for="perfis">Perfis</label>
+          <p-dropdown id="perfis" [options]="perfis" formControlName="perfil" optionLabel="nome" placeholder=" "
+            name="perfil"></p-dropdown>
+        </div>
+
+        <div class="field col-12">
+          <span class="p-float-label">
+            <input name="senha" id="senha" type="password" pInputText formControlName="senha">
+            <label for="senha">Nova Senha</label>
+          </span>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Fechar" icon="pi pi-times" severity="danger" (click)="cancel()" />
+    <p-button label="Atualizar" icon="pi pi-check" severity="success" (click)="updateUsuario()" class="p-mr-2"
+      styleClass="p-button-primary" />
+  </ng-template>
+</p-dialog>

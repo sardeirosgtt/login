@@ -1,0 +1,95 @@
+<div class="my-2">
+    <button *ngIf="hasFunctionality('CRIAR_USUARIO')" pTooltip="Adicionar novo usuário" tooltipPosition="bottom" pButton pRipple label="Novo" icon="pi pi-plus"
+        class="p-button-success mr-2" (click)="newUsuario()"></button>
+</div>
+
+<app-usuario-create (confirm)="onConfirmCreate($event)"></app-usuario-create>
+
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <p-table #dt1 [value]="usuarios" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true"
+                styleClass="p-datatable-gridlines" [paginator]="true"
+                [globalFilterFields]="['id','nome','email','perfil']" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-content-between flex-column sm:flex-row">
+                        <button pButton label="Limpar" class="p-button-outlined mb-2" icon="pi pi-filter-slash"
+                            (click)="clear(dt1)"></button>
+                        <div>
+                            <h2><b>Usuários</b></h2>
+                        </div>
+                        <span class="p-input-icon-left mb-2">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)"
+                                placeholder="Palavra Chave" class="w-full" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="id" style="min-width: 12rem">
+                            <div class="flex justify-content-between align-items-center">
+                                ID
+                                <p-columnFilter type="text" field="id" display="menu"
+                                    placeholder="Buscar por Código"></p-columnFilter>
+                                <p-sortIcon field="id"></p-sortIcon>
+                            </div>
+                        </th>
+                        <th pSortableColumn="nome" style="min-width: 12rem">
+                            <div class="flex justify-content-between align-items-center">
+                                Nome
+                                <p-columnFilter type="text" field="nome" display="menu"
+                                    placeholder="Buscar por Nome"></p-columnFilter>
+                                <p-sortIcon field="nome"></p-sortIcon>
+                            </div>
+                        </th>
+                        <th pSortableColumn="email" style="min-width: 12rem">
+                            <div class="flex justify-content-between align-items-center">
+                                E-mail
+                                <p-columnFilter type="text" field="email" display="menu"
+                                    placeholder="Buscar por Email"></p-columnFilter>
+                                <p-sortIcon field="email"></p-sortIcon>
+                            </div>
+                        </th>
+                        <th pSortableColumn="funcao" style="min-width: 12rem">
+                            <div class="flex justify-content-between align-items-center">
+                                Perfil
+                                <p-columnFilter type="text" field="Perfil" display="menu"
+                                    placeholder="Buscar por Perfil"></p-columnFilter>
+                                <p-sortIcon field="Perfil"></p-sortIcon>
+                            </div>
+                        </th>
+                        <th style="min-width: 8rem">
+                            Ações
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-usuario>
+                    <tr>
+                        <td>{{usuario.id}}</td>
+                        <td>{{usuario.nome}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td>{{usuario?.perfil?.nome}}</td>
+                        <td>
+                            <div class="flex">
+                                <button *ngIf="hasFunctionality('EDITAR_USUARIO')" pTooltip="Editar usuário" tooltipPosition="bottom" pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success mr-2"
+                                    [routerLink]="['/usuario/update', usuario.id]"></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="10">Nenhum usuário encontrado.</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="loadingbody">
+                    <tr>
+                        <td colspan="10">Carregando dados. Por favor, aguarde.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

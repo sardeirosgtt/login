@@ -1,0 +1,41 @@
+/* Estilo para o p-card */
+p-card.perfil {
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para o cabeçalho do p-card */
+  p-card.perfil .p-card-header {
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  /* Estilo para os campos de entrada */
+  p-card.perfil .p-field {
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para os botões */
+  p-card.perfil .p-button {
+    margin-right: 10px;
+  }
+  
+  /* Estilo para o botão Salvar */
+  p-card.perfil .p-button-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+  }
+  
+  /* Estilo para o botão Cancelar */
+  p-card.perfil .p-button-secondary {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+  }
+  

@@ -1,0 +1,73 @@
+<div class="my-2">
+    <button *ngIf="hasFunctionality('CRIAR_PERFIL')" pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success mr-2"
+        pTooltip="Adicionar novo perfil" tooltipPosition="bottom" (click)="newPerfil()"></button>
+</div>
+
+<app-perfil-create (confirm)="onConfirmCreate($event)">></app-perfil-create>
+
+
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <p-table #dt1 [value]="perfis" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true"
+                styleClass="p-datatable-gridlines" [paginator]="true"
+                [globalFilterFields]="['id','nome','login','funcao','ativo']" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-content-between flex-column sm:flex-row">
+                        <button pButton label="Limpar" class="p-button-outlined mb-2" icon="pi pi-filter-slash"
+                            (click)="clear(dt1)"></button>
+                        <span class="p-input-icon-left mb-2">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)"
+                                placeholder="Palavra Chave" class="w-full" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="min-width: 12rem">
+                            <div class="flex justify-content-between align-items-center">
+                                ID
+                                <p-columnFilter type="text" field="id" display="menu"
+                                    placeholder="Buscar por Código"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th style="min-width: 12rem">
+                            <div class="flex justify-content-between align-items-center">
+                                Nome
+                                <p-columnFilter type="text" field="nome" display="menu"
+                                    placeholder="Buscar por Nome"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th style="min-width: 8rem">
+                            Ações
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-perfil>
+                    <tr>
+                        <td>{{perfil.id}}</td>
+                        <td>{{perfil.nome}}</td>
+                        <td>
+                            <div class="flex">
+                                <button *ngIf="hasFunctionality('EDITAR_PERFIL')" pButton pRipple icon="pi pi-pencil" pTooltip="Eitar perfil"
+                                    tooltipPosition="bottom" class="p-button-rounded p-button-success mr-2"
+                                    [routerLink]="['/perfil/update', perfil.id]"></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="10">Nenhum Perfil encontrado.</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="loadingbody">
+                    <tr>
+                        <td colspan="10">Carregando dados. Por favor, aguarde.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+
+<p-dialog header="Atualizar Perfil" [(visible)]="visible" [modal]="true" [style]="{ width: '1000px', height: '900px' }"
+    [breakpoints]="{ '1199px': '75vw', '900px': '90vw' }" [maximizable]="true" (onHide)="cancel()">
+    <div class="card">
+        <form>
+            <div class="p-fluid grid">
+                <div class="field col-12">
+                    <span class="p-float-label">
+                        <input name="nome" id="float-input" type="text" pInputText [(ngModel)]="perfil.nome">
+                        <label for="float-input">Nome</label>
+                    </span>
+                </div>
+
+                <div class="field col-12">
+                    <h5>Funções</h5>
+                    <button type="button" pButton label="Selecionar Tudo" icon="pi pi-check-square"
+                        (click)="toggleSelectAll()" class="p-mb-2" style="margin-bottom: 15px;"></button>
+
+                    <p-accordion>
+                        <p-accordionTab *ngFor="let grupo of funcionalidadesPorModulo"
+                            [header]="camelCaseToSpaces(grupo.modulo)">
+                            <div *ngFor="let funcionalidade of grupo.funcionalidades">
+                                <p-checkbox style="margin-bottom: 5px;" name="funcionalidades" [value]="funcionalidade"
+                                    [(ngModel)]="perfil.funcionalidades" label="{{ funcionalidade.nomeLegivel }}">
+                                </p-checkbox>
+                            </div>
+                        </p-accordionTab>
+                    </p-accordion>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button label="Cancelar" icon="pi pi-times" severity="danger" (click)="cancel()" />
+        <p-button label="Salvar" icon="pi pi-check" severity="success" (click)="updatePerfil()" class="p-mr-2"
+            styleClass="p-button-primary" />
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,52 @@
+
+  <p-dialog
+    header="Criar Usuário"
+    [(visible)]="visible"
+    [modal]="true"
+    [style]="{ width: '1000px', height: '900px' }"
+    [breakpoints]="{ '1199px': '75vw', '900px': '90vw' }"
+    [maximizable]="true"
+    (onHide)="hideDialog()">
+    <div class="card">
+      <form [formGroup]="usuarioForm">
+        <div class="p-fluid grid">
+
+          <div class="field col-12">
+            <span class="p-float-label">
+              <input name="nome" id="nome" type="text" pInputText formControlName="nome">
+              <label for="nome">Nome</label>
+            </span>
+            <small class="p-error" *ngIf="usuarioForm.get('Nome')?.errors?.['required']" severity="error">O Nome é obrigatório</small>
+          </div>
+
+          <div class="field col-12">
+            <span class="p-float-label">
+              <input name="email" id="email" type="email" pInputText formControlName="email">
+              <label for="email">Email</label>
+            </span>
+            <small class="p-error" *ngIf="usuarioForm.get('email')?.errors?.['required']" severity="error">O email é obrigatório</small>
+            <small class="p-error" *ngIf="usuarioForm.get('email')?.errors?.['email']" severity="error">Email invalido</small>
+          </div>
+
+          <div class="field col-12">
+            <label for="perfis">Perfis</label>
+            <p-dropdown id="perfis" [options]="perfis" formControlName="perfil" optionLabel="nome" placeholder="Selecione" name="perfil"></p-dropdown>
+            <small class="p-error" *ngIf="usuarioForm.get('perfil')?.errors?.['required']" severity="error">O perfil é obrigatório</small>
+          </div>
+
+          <div class="field col-12">
+            <span class="p-float-label">
+              <input name="password" id="password" type="password" pInputText formControlName="password">
+              <label for="password">Senha</label>
+            </span>
+            <small class="p-error" *ngIf="usuarioForm.get('password')?.errors?.['required']" severity="error">A senha é obrigatória</small>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Fechar" icon="pi pi-times" severity="danger" (click)="hideDialog()"/>
+      <p-button [disabled]="usuarioForm.invalid"  label="Salvar" icon="pi pi-check" severity="success" (click)="createUsuario()" class="p-mr-2" styleClass="p-button-primary"/>
+    </ng-template>
+  </p-dialog>
