@@ -36,15 +36,24 @@ export class AppMenuComponent implements OnInit {
                 label: 'Serviços',
                 items: [
                     {
-                        label: 'Usuários',
-                        icon: 'pi pi-fw pi-id-card',
-                        routerLink: ['/usuario'],
+                        label: 'Cadastros',
+                        icon: 'pi pi-fw pi-file',
+                        items: [
+                            {
+                                label: 'Usuários',
+                                icon: 'pi pi-fw pi-id-card',
+                                routerLink: ['/usuario'],
+                                visible: this.hasFunctionality('LISTAR_USUARIO'),
+                            },
+                            {
+                                label: 'Perfil',
+                                icon: 'pi pi-fw pi-truck',
+                                routerLink: ['/perfil'],
+                                visible: this.hasFunctionality('VER_PERFIL'),
+                            },
+                        ]
                     },
-                    {
-                        label: 'Perfil',
-                        icon: 'pi pi-fw pi-truck',
-                        routerLink: ['/perfil'],
-                    },
+
                 ],
             },
         ];

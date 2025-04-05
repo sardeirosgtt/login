@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class LoginApplication {
 
+    //http://localhost:8080/swagger-ui/index.html
 	public static void main(String[] args) {
 		SpringApplication.run(LoginApplication.class, args);
 	}
