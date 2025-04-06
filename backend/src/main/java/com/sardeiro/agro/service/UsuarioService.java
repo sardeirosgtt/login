@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.sardeiro.agro.domain.Perfil;
 import com.sardeiro.agro.domain.Usuario;
-import com.sardeiro.agro.dtos.UsuarioDTO;
+import com.sardeiro.agro.dtos.usuarios.UsuarioDTO;
 import com.sardeiro.agro.repository.UsuarioRepository;
 
 import jakarta.persistence.EntityNotFoundException;

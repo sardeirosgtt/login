@@ -1,6 +1,8 @@
-package com.sardeiro.agro.dtos;
+package com.sardeiro.agro.dtos.perfil;
 
 import java.util.Set;
+
+import com.sardeiro.agro.dtos.funcionalidades.FuncionalidadeDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

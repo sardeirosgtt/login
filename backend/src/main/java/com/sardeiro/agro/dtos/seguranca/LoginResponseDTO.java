@@ -1,4 +1,4 @@
-package com.sardeiro.agro.dtos;
+package com.sardeiro.agro.dtos.seguranca;
 
 import com.sardeiro.agro.domain.Usuario;
 

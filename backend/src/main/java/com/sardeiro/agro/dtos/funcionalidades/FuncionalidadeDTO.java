@@ -1,4 +1,4 @@
-package com.sardeiro.agro.dtos;
+package com.sardeiro.agro.dtos.funcionalidades;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioDTO{
+public class FuncionalidadeDTO
+{  
     private Long id;
     private String nome;
-    private String email;
-    private String password;
-    private PerfilDTO perfil;  
-} 
+    private String nomeLegivel;
+    private String modulo;
+ }

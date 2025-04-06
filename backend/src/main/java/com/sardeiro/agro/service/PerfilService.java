@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sardeiro.agro.domain.Perfil;
-import com.sardeiro.agro.dtos.PerfilDTO;
+import com.sardeiro.agro.dtos.perfil.PerfilDTO;
 
 
 @Service

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sardeiro.agro.domain.Funcionalidade;
-import com.sardeiro.agro.dtos.FuncionalidadeDTO;
+import com.sardeiro.agro.dtos.funcionalidades.FuncionalidadeDTO;
 import com.sardeiro.agro.repository.FuncionalidadeRepository;
 
 

@@ -3,7 +3,7 @@ package com.sardeiro.agro.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sardeiro.agro.dtos.FuncionalidadeDTO;
+import com.sardeiro.agro.dtos.funcionalidades.FuncionalidadeDTO;
 import com.sardeiro.agro.service.FuncionalidadeService;
 
 import java.util.List;

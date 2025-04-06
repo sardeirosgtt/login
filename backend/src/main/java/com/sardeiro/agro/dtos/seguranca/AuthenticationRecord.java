@@ -1,4 +1,4 @@
-package com.sardeiro.agro.dtos;
+package com.sardeiro.agro.dtos.seguranca;
 
 public record AuthenticationRecord(String email, String password) {
 		 

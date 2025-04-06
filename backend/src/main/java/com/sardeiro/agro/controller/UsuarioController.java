@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sardeiro.agro.domain.Usuario;
-import com.sardeiro.agro.dtos.AuthenticationRecord;
-import com.sardeiro.agro.dtos.LoginResponseDTO;
-import com.sardeiro.agro.dtos.UsuarioDTO;
+import com.sardeiro.agro.dtos.seguranca.AuthenticationRecord;
+import com.sardeiro.agro.dtos.seguranca.LoginResponseDTO;
+import com.sardeiro.agro.dtos.usuarios.UsuarioDTO;
 import com.sardeiro.agro.seguranca.TokenService;
 import com.sardeiro.agro.service.UsuarioService;
 

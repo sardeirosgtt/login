@@ -58,4 +58,8 @@ public class Fazenda {
     @JoinColumn(name = "dono_id", nullable = false)
     private Usuario dono;
 
+    @NotNull(message = "Especifique se esta ativa")
+    @Column(nullable = false)
+    private Boolean ativa = false;
+
 }
