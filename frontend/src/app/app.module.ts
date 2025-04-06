@@ -48,6 +48,9 @@ import { PerfilUpdateComponent } from './components/perfilAcesso/perfil-update/p
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { HttpErrorInterceptor } from './components/interceptors/httpErrorInterceptor';
+import { FazendaCreateComponent } from './components/fazenda/fazenda-create/fazenda-create.component';
+import { FazendaReadComponent } from './components/fazenda/fazenda-read/fazenda-read.component';
+import { FazendaUpdateComponent } from './components/fazenda/fazenda-update/fazenda-update.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -63,6 +66,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         UsuarioCreateComponent,
         UsuarioReadComponent,
         UsuarioUpdateComponent,
+        FazendaCreateComponent,
+        FazendaReadComponent,
+        FazendaUpdateComponent,
 
 
     ],

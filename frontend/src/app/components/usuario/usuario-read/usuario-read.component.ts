@@ -11,11 +11,8 @@ import { AuthService } from '../../service/auth.service';
     templateUrl: './usuario-read.component.html',
 })
 export class UsuarioReadComponent implements OnInit {
-    displayConfirmDialog: boolean = false;
     usuarios: Usuario[] = [];
     loading: boolean = true;
-    usuario: Usuario;
-    confirmMessage: string = '';
 
     @ViewChild(UsuarioCreateComponent)
     usuarioCreateComponent!: UsuarioCreateComponent;

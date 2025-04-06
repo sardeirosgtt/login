@@ -8,3 +8,9 @@ export interface Usuario {
     perfil: Perfil;
     senha?: String;
 }
+
+export interface UsuarioListDTO {
+    id: number;
+    nome: string;
+    email: string;
+  }

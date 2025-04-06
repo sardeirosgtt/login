@@ -37,7 +37,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     {
                         label: 'Cadastros',
-                        icon: 'pi pi-fw pi-file',
+                        icon: 'pi pi-fw pi-file', 
                         items: [
                             {
                                 label: 'Usuários',
@@ -50,6 +50,12 @@ export class AppMenuComponent implements OnInit {
                                 icon: 'pi pi-fw pi-truck',
                                 routerLink: ['/perfil'],
                                 visible: this.hasFunctionality('VER_PERFIL'),
+                            },
+                            {
+                                label: 'Fazenda',
+                                icon: 'pi pi-spin pi-sun',
+                                routerLink: ['/fazenda'],
+                                visible: this.hasFunctionality('LISTAR_FAZENDAS'),
                             },
                         ]
                     },

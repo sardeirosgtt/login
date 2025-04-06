@@ -15,7 +15,6 @@ import com.sardeiro.agro.repository.UsuarioRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
-
 @Service
 public class UsuarioService {
 

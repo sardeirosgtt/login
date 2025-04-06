@@ -3,7 +3,7 @@ package com.sardeiro.agro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus; 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,7 +24,6 @@ import com.sardeiro.agro.dtos.seguranca.LoginResponseDTO;
 import com.sardeiro.agro.dtos.usuarios.UsuarioDTO;
 import com.sardeiro.agro.seguranca.TokenService;
 import com.sardeiro.agro.service.UsuarioService;
-
 
 @RestController
 @RequestMapping("/usuarios")
@@ -49,19 +48,18 @@ public class UsuarioController {
         String senhaCodificada = passwordEncoder.encode(usuarioDTO.getPassword());
         String loginConvertido = usuarioDTO.getEmail().toUpperCase();
         String nomeConvertido = usuarioDTO.getNome().toUpperCase();
-        
+
         UsuarioDTO usuarioDTOTransformado = new UsuarioDTO(
                 usuarioDTO.getId(),
                 nomeConvertido,
                 loginConvertido,
                 senhaCodificada,
-                usuarioDTO.getPerfil()
-        );
+                usuarioDTO.getPerfil());
         UsuarioDTO usuario = service.salvar(usuarioDTOTransformado);
         return ResponseEntity
-            .status(HttpStatus.CREATED)
-            .header("Message", "Usuário cadastrado com sucesso!")
-            .body(usuario);
+                .status(HttpStatus.CREATED)
+                .header("Message", "Usuário cadastrado com sucesso!")
+                .body(usuario);
     }
 
     @PostMapping("/login")
@@ -83,7 +81,6 @@ public class UsuarioController {
     public UsuarioDTO findById(@PathVariable("id") Long Id) {
         return service.findById(Id);
     }
-    
 
     @PreAuthorize("hasAuthority('EDITAR_USUARIO')")
     @PutMapping("/atualizar/{id}")
@@ -93,5 +90,5 @@ public class UsuarioController {
         }
         return service.atualizar(id, usuarioAtualizado);
     }
-    
+
 }

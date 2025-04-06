@@ -10,6 +10,8 @@ import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usua
 import { PerfilReadComponent } from './components/perfilAcesso/perfil-read/perfil-read.component';
 import { PerfilCreateComponent } from './components/perfilAcesso/perfil-create/perfil-create.component';
 import { PerfilUpdateComponent } from './components/perfilAcesso/perfil-update/perfil-update.component';
+import { FazendaReadComponent } from './components/fazenda/fazenda-read/fazenda-read.component';
+import { FazendaUpdateComponent } from './components/fazenda/fazenda-update/fazenda-update.component';
 @NgModule({
     imports: [
         RouterModule.forRoot(
@@ -31,11 +33,6 @@ import { PerfilUpdateComponent } from './components/perfilAcesso/perfil-update/p
                             canActivate: [AuthGuard],
                         },
                         {
-                            path: 'usuario/create',
-                            component: UsuarioCreateComponent,
-                            canActivate: [AuthGuard],
-                        },
-                        {
                             path: 'usuario/update/:id',
                             component: UsuarioUpdateComponent,
                             canActivate: [AuthGuard],
@@ -46,13 +43,19 @@ import { PerfilUpdateComponent } from './components/perfilAcesso/perfil-update/p
                             canActivate: [AuthGuard],
                         },
                         {
-                            path: 'perfil/create',
-                            component: PerfilCreateComponent,
+                            path: 'perfil/update/:id',
+                            component: PerfilUpdateComponent,
+                            canActivate: [AuthGuard],
+                        },
+
+                        {
+                            path: 'fazenda',
+                            component: FazendaReadComponent,
                             canActivate: [AuthGuard],
                         },
                         {
-                            path: 'perfil/update/:id',
-                            component: PerfilUpdateComponent,
+                            path: 'fazenda/update/:id',
+                            component: FazendaUpdateComponent,
                             canActivate: [AuthGuard],
                         },
                         {

@@ -18,6 +18,8 @@ import com.sardeiro.agro.dtos.fazenda.FazendaListDTO;
 import com.sardeiro.agro.repository.FazendaRepository;
 import com.sardeiro.agro.repository.UsuarioRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 
 @Service
 public class FazendaService {
@@ -70,6 +72,31 @@ public class FazendaService {
         fazenda.setAtiva(true);
         repository.save(fazenda);
     }
+
+    @Transactional
+    public void desativarFazenda(Long id) {
+        Fazenda fazenda = repository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fazenda não encontrada"));
+        fazenda.setAtiva(false);
+        repository.save(fazenda);
+    }
+
+    @org.springframework.transaction.annotation.Transactional
+    public FazendaDTO atualizar(Long id, FazendaDTO fazendaAtualizada) {
+        return repository.findById(id)
+                .map(fazenda -> {
+                    fazenda.setNomeFazenda(fazendaAtualizada.getNomeFazenda().toUpperCase());
+                    fazenda.setDono(usuarioRepository.findById(fazendaAtualizada.getDonoId())
+                        .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado para o ID: " + fazendaAtualizada.getDonoId())));
+                    fazenda.setObjetivo(fazendaAtualizada.getObjetivo());
+                    fazenda.setTamanhoHectares(fazendaAtualizada.getTamanhoHectares());
+    
+                    repository.save(fazenda);
+                    return modelMapper.map(fazenda, FazendaDTO.class);
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Fazenda não encontrada para o ID: " + id));
+    }
+    
 
 
 
